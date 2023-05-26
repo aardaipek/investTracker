@@ -11,7 +11,7 @@ export class User {
   surname: string;
   @Prop({ required: true })
   email: string;
-  @Prop({ required: true })
+  @Prop({ default: true })
   isActive: boolean;
 }
 
