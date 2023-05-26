@@ -6,8 +6,7 @@ import { ActivityModule } from './modules/activity.module';
 import { DashboardModule } from './modules/dashboard.module';
 import { UserModule } from './modules/user.module';
 import { ConfigurationModule } from './modules/config.module';
-import { MongooseModule } from '@nestjs/mongoose';
-import { MongooseConfigService } from './config/mongo.config.service';
+
 @Module({
   imports: [
     ConfigurationModule,
@@ -16,9 +15,7 @@ import { MongooseConfigService } from './config/mongo.config.service';
     DashboardModule,
     UserModule,
   ],
-  controllers: [
-    AppController,
-  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
