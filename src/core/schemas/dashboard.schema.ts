@@ -7,12 +7,12 @@ export type DashboardDocument = HydratedDocument<Dashboard>;
 export class Dashboard {
   @Prop({ required: true })
   name: string;
-  @Prop({ required: true })
+  @Prop({ default: true })
   isActive: boolean;
   @Prop({ required: true })
   priority: number;
   @Prop({ required: true })
-  userId: number;
+  userId: string;
 }
 
 export const DashboardSchema = SchemaFactory.createForClass(Dashboard);

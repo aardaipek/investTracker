@@ -13,4 +13,13 @@ export class UserController {
       return err;
     }
   }
+
+  @Post('getUser')
+  public async GetUser(@Body() data) {
+    try {
+      return await this.userService.getUser(data.email);
+    } catch (err) {
+      return err;
+    }
+  }
 }

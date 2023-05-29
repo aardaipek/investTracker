@@ -7,12 +7,12 @@ export type ActivityDocument = HydratedDocument<Activity>;
 export class Activity {
   @Prop({ required: true })
   name: string;
-  @Prop({ required: true })
+  @Prop({ default: true })
   isSuccess: boolean;
   @Prop({ required: true })
   type: number; // TODO enum yap
   @Prop({ required: true })
-  portfolioId: number;
+  portfolioId: string;
   @Prop({ required: true })
   purchaseDate: string;
   @Prop({ required: true })

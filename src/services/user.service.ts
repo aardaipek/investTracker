@@ -8,4 +8,8 @@ export class UserService {
   public async createUser(data) {
     return await this.userRepository.createUser(data);
   }
+
+  public async getUser(email) {
+    return await this.userRepository.getUser(email);
+  }
 }
