@@ -14,4 +14,13 @@ export class PortfolioController {
       return err;
     }
   }
+
+  @Post('getPortfolio')
+  public async GetPortfolio(@Body() data) {
+    try {
+      return await this.portfolioService.getPortfolioById(data.id);// TODO Refactor needed
+    } catch (err) {
+      return err;
+    }
+  }
 }

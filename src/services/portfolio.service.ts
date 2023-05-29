@@ -8,4 +8,8 @@ export class PortfolioService {
   public async createPortfolio(data) {
     return await this.portfolioRepository.createPortfolio(data);
   }
+
+  public async getPortfolioById(id) {
+    return await this.portfolioRepository.getPortfolioById(id);
+  }
 }
