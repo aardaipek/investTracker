@@ -7,12 +7,12 @@ export type PortfolioDocument = HydratedDocument<Portfolio>;
 export class Portfolio {
   @Prop({ required: true })
   name: string;
-  @Prop({ required: true })
+  @Prop({ default: true })
   isActive: boolean;
   @Prop({ required: true })
   priority: number;
   @Prop({ required: true })
-  dashboardId: number;
+  dashboardId: string;
 }
 
 export const PortfolioSchema = SchemaFactory.createForClass(Portfolio);
