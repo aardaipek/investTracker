@@ -8,4 +8,8 @@ export class ActivityService {
   public async createActivity(data) {
     return await this.activityRepository.createActivity(data);
   }
+
+  public async getAllActivity(potfolioId) {
+    return await this.activityRepository.getAllActivity(potfolioId);
+  }
 }

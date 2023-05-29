@@ -14,4 +14,13 @@ export class ActivityController {
       return err;
     }
   }
+
+  @Post('getAllActivity')
+  public async GetAllActivity(@Body() data) {
+    try {
+      return await this.activityService.getAllActivity(data.portfolioId);
+    } catch (err) {
+      return err;
+    }
+  }
 }
