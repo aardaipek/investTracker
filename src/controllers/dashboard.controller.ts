@@ -6,7 +6,7 @@ import { Logger } from '../config/logger';
 @Controller('api/dashboard')
 export class DashboardController {
   constructor(private readonly dashboardService: DashboardService, private logger:Logger) {
-    this.logger.setContext('DashboardController');
+    this.logger.setContext(DashboardController.name);
   }
 
   @Post('create')

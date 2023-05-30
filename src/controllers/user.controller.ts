@@ -5,7 +5,7 @@ import { Logger } from '../config/logger';
 @Controller('api/user')
 export class UserController {
   constructor(private readonly userService: UserService,private logger:Logger) {
-    this.logger.setContext('UserController');
+    this.logger.setContext(UserController.name);
   }
 
   @Post('create')

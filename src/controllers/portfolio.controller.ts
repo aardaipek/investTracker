@@ -6,7 +6,7 @@ import { Logger } from '../config/logger';
 @Controller('api/portfolio')
 export class PortfolioController {
   constructor(private readonly portfolioService: PortfolioService, private logger:Logger) {
-    this.logger.setContext('PortfolioController');
+    this.logger.setContext(PortfolioController.name);
   }
 
   @Post('create')

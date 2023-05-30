@@ -6,7 +6,7 @@ import { Logger } from '../config/logger';
 @Controller('api/activity')
 export class ActivityController {
   constructor(private readonly activityService: ActivityService, private logger:Logger) {
-    this.logger.setContext('ActivityController');
+    this.logger.setContext(ActivityController.name);
   }
 
   @Post('create')
