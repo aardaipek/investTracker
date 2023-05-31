@@ -19,10 +19,20 @@ export class DashboardController {
     }
   }
 
+  @Post('getUserDashboards')
+  public async GetUserDashboards(@Body() data: any) {
+    try {
+      return await this.dashboardService.getUserDashboards(data.userId);
+    } catch (err) {
+      this.logger.error(err);
+      return err;
+    }
+  }
+
   @Post('getDashboard')
   public async GetDashboard(@Body() data: any) {
     try {
-      return await this.dashboardService.getDashboards(data.userId);
+      return await this.dashboardService.getDashboard(data.dashboardId);
     } catch (err) {
       this.logger.error(err);
       return err;

@@ -13,8 +13,13 @@ export class DashboardRepository {
     return newDashbaord.save();
   }
 
-  public async getDashboard(userId: string): Promise<IDashboard[]> {
+  public async getUserDashboards(userId: string): Promise<IDashboard[]> {
     const dashboards = await this.dashboardModel.find({userId:userId}).exec();
     return dashboards;
+  }
+
+  public async getDashboard(dashboardId: string): Promise<IDashboard> {
+    const dashboard =  await this.dashboardModel.findOne({_id:dashboardId}).exec();
+    return dashboard;
   }
 }
