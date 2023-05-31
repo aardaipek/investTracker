@@ -12,4 +12,8 @@ export class PortfolioService {
   public async getPortfolioById(id) {
     return await this.portfolioRepository.getPortfolioById(id);
   }
+
+  public async getAllPortfolio(dashboardId) {
+    return await this.portfolioRepository.getAllPortfolio(dashboardId);
+  }
 }

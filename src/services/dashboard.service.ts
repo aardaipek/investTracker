@@ -8,4 +8,7 @@ export class DashboardService {
   public async createDashboard(data) {
     return await this.dashboardRepository.createDashbaord(data);
   }
+  public async getDashboards(userId) {
+    return await this.dashboardRepository.getDashboard(userId);
+  }
 }

@@ -28,4 +28,14 @@ export class PortfolioController {
       return err;
     }
   }
+
+  @Post('getAllPortfolio')
+  public async GetAllPortfolio(@Body() data) {
+    try {
+      return await this.portfolioService.getAllPortfolio(data.dashboardId);// TODO Refactor needed
+    } catch (err) {
+      this.logger.error(err);
+      return err;
+    }
+  }
 }
