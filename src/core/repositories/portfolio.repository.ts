@@ -20,4 +20,9 @@ export class PortfolioRepository {
     }
     return existingPortfolio;
   }
+
+  public async getAllPortfolio(dashboardId: string): Promise<IPortfolio[]> {
+    const portfolios = await this.portfolioModel.find({dashboardId: dashboardId}).exec();
+    return portfolios;
+  }
 }
