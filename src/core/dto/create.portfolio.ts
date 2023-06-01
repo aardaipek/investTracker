@@ -13,4 +13,8 @@ export class CreatePortfolioDto {
     @IsString()
     @IsNotEmpty()
     readonly dashboardId: string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly currency: string;
 }
