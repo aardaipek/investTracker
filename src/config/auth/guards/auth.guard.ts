@@ -7,7 +7,7 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { ConstantService } from '../../constant.service';
 import { Request } from 'express';
-import { Role } from '../guard.decorators';
+import { Role } from './guard.decorators';
 import { Reflector } from '@nestjs/core';
 
 

@@ -25,5 +25,6 @@ export class AuthService {
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
+    // TODO Save access_token Redis or Db
   }
 }

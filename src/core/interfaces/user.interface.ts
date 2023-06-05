@@ -1,5 +1,5 @@
 import { Document } from 'mongoose';
-import { Role } from '../../config/auth/guard.decorators';
+import { Role } from '../../config/auth/guards/guard.decorators';
 
 export interface IUser extends Document{
     name: string;

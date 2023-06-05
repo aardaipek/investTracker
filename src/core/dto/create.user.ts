@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
-import { Role } from "../../config/auth/guard.decorators";
+import { Role } from "../../config/auth/guards/guard.decorators";
 
 export class CreateUserDto {
     @IsString()
