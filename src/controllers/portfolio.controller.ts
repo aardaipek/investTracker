@@ -2,6 +2,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { PortfolioService } from '../services/portfolio.service';
 import { CreatePortfolioDto } from '../core/dto/create.portfolio';
 import { Logger } from '../config/logger';
+import { Role, Roles } from '../config/auth/guard.decorators';
 
 @Controller('api/portfolio')
 export class PortfolioController {
@@ -20,6 +21,7 @@ export class PortfolioController {
   }
 
   @Post('getPortfolio')
+  @Roles(Role.User)
   public async GetPortfolio(@Body() data) {
     try {
       return await this.portfolioService.getPortfolioById(data.id);// TODO Refactor needed
@@ -30,6 +32,7 @@ export class PortfolioController {
   }
 
   @Post('getAllPortfolio')
+  @Roles(Role.Admin)
   public async GetAllPortfolio(@Body() data) {
     try {
       return await this.portfolioService.getAllPortfolio(data.dashboardId);// TODO Refactor needed

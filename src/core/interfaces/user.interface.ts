@@ -5,4 +5,6 @@ export interface IUser extends Document{
     surname: string;
     email: string;
     isActive: boolean;
+    password:string;
+    //roles: string[]; TODO ROLES enum needed
 }
