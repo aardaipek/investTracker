@@ -19,19 +19,10 @@ export class AuthGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
-    const user = request.user;
 
     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [context.getHandler(),context.getClass()]);
     if (isPublic) {
       return true;
-    }
-
-    const roles = this.reflector.get<Role[]>('roles', context.getHandler());
-    if (roles) {
-      const abc = roles.some((role) => user?.roles?.includes(role));
-      if(!abc){
-        throw new UnauthorizedException();
-      }
     }
 
     const token = this.extractTokenFromHeader(request);
@@ -43,7 +34,16 @@ export class AuthGuard implements CanActivate {
         secret: new ConstantService().getConstants().jwtSecret,
       });
       request['user'] = payload;
-    } catch {
+
+      const roles = this.reflector.get<Role[]>('roles', context.getHandler());
+      if (roles) {
+        const abc = roles.some((role) => request.user?.roles?.includes(role));
+        if(!abc){
+          throw new UnauthorizedException();
+        }
+      }
+    } catch(err) {
+      console.log(err)
       throw new UnauthorizedException();
     }
     return true;

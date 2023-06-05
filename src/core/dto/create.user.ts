@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { Role } from "../../config/auth/guard.decorators";
 
 export class CreateUserDto {
     @IsString()
@@ -20,5 +21,5 @@ export class CreateUserDto {
     @IsNotEmpty()
     readonly password: string;
 
-    readonly roles: string[];
+    readonly roles: Role[];
 }

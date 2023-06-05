@@ -1,4 +1,5 @@
 import { Document } from 'mongoose';
+import { Role } from '../../config/auth/guard.decorators';
 
 export interface IUser extends Document{
     name: string;
@@ -6,5 +7,5 @@ export interface IUser extends Document{
     email: string;
     isActive: boolean;
     password:string;
-    //roles: string[]; TODO ROLES enum needed
+    roles: Role[];
 }

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { Role } from '../../config/auth/guard.decorators';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -15,8 +16,8 @@ export class User {
   email: string;
   @Prop({ default: true })
   isActive: boolean;
-  // @Prop({ required: true })
-  // roles: [string];
+  @Prop({ required: true })
+  roles: Role[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
