@@ -13,6 +13,8 @@ export class Portfolio {
   priority: number;
   @Prop({ required: true })
   dashboardId: string;
+  @Prop({ required: true })
+  currency: string;
 }
 
 export const PortfolioSchema = SchemaFactory.createForClass(Portfolio);

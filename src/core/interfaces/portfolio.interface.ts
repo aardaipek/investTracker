@@ -5,4 +5,5 @@ export interface IPortfolio extends Document{
     isActive: boolean;
     priority: number;
     dashboardId: number;
+    currency: string
 }

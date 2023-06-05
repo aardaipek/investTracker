@@ -2,6 +2,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { DashboardService } from '../services/dashboard.service';
 import { CreateDashboardDto } from '../core/dto/create.dashboard'; 
 import { Logger } from '../config/logger';
+import { Role, Roles } from '../config/auth/guards/guard.decorators';
 
 @Controller('api/dashboard')
 export class DashboardController {
@@ -10,6 +11,7 @@ export class DashboardController {
   }
 
   @Post('create')
+  @Roles(Role.User)
   public async CreateDashboard(@Body() data: CreateDashboardDto) {
     try {
       return await this.dashboardService.createDashboard(data);
@@ -20,6 +22,7 @@ export class DashboardController {
   }
 
   @Post('getUserDashboards')
+  @Roles(Role.User)
   public async GetUserDashboards(@Body() data: any) {
     try {
       return await this.dashboardService.getUserDashboards(data.userId);
@@ -30,6 +33,7 @@ export class DashboardController {
   }
 
   @Post('getDashboard')
+  @Roles(Role.User)
   public async GetDashboard(@Body() data: any) {
     try {
       return await this.dashboardService.getDashboard(data.dashboardId);
