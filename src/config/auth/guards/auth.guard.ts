@@ -29,6 +29,7 @@ export class AuthGuard implements CanActivate {
     if (!token) {
       throw new UnauthorizedException();
     }
+
     try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: new ConstantService().getConstants().jwtSecret,
@@ -36,9 +37,10 @@ export class AuthGuard implements CanActivate {
       request['user'] = payload;
 
       const roles = this.reflector.get<Role[]>('roles', context.getHandler());
+
       if (roles) {
-        const abc = roles.some((role) => request.user?.roles?.includes(role));
-        if(!abc){
+        const isRoleExist = roles.some((role) => request.user?.roles?.includes(role));
+        if(!isRoleExist){
           throw new UnauthorizedException();
         }
       }
