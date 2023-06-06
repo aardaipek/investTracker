@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from '../dto/create.user';
 import { IUser } from '../interfaces/user.interface';
+import { UpdateUserDto } from '../dto/update.user';
 
 @Injectable()
 export class UserRepository {
@@ -17,6 +18,18 @@ export class UserRepository {
     const existingUser = await this.userModel.findOne({email:email}).exec();
     if (!existingUser) {
       throw new NotFoundException(`User #${email} not found`);
+    }
+    return existingUser;
+  }
+
+  public async updateUser(userId: string, updateUserDto:UpdateUserDto){
+    const existingUser = await this.userModel.findByIdAndUpdate(
+      userId,
+      updateUserDto,
+      { new: true },
+    );
+    if (!existingUser) {
+      throw new NotFoundException(`User #${userId} not found`);
     }
     return existingUser;
   }

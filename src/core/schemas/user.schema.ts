@@ -18,6 +18,8 @@ export class User {
   isActive: boolean;
   @Prop({ required: true })
   roles: Role[];
+  @Prop()
+  access_token: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

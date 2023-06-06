@@ -19,6 +19,10 @@ export class CreateUserDto {
 
     @IsString()
     @IsNotEmpty()
+    readonly accessToken: string;
+
+    @IsString()
+    @IsNotEmpty()
     readonly password: string;
 
     readonly roles: Role[];

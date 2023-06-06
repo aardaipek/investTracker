@@ -17,4 +17,8 @@ export class UserService {
   public async getUser(email) {
     return await this.userRepository.getUser(email);
   }
+
+  public async updateUser(userId,data) {
+    return await this.userRepository.updateUser(userId, data);
+  }
 }
