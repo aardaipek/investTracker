@@ -39,7 +39,8 @@ export class AuthGuard implements CanActivate {
       const roles = this.reflector.get<Role[]>('roles', context.getHandler());
 
       if (roles) {
-        const isRoleExist = roles.some((role) => request.user?.roles?.includes(role));
+        const userRole = request.user?.role
+        const isRoleExist = roles?.some((role) => role == userRole);
         if(!isRoleExist){
           throw new UnauthorizedException();
         }

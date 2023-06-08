@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { LocalStrategy } from '../config/auth/strategies/local.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from '../services/auth.service';
 import { UserModule } from './user.module';
@@ -9,7 +8,6 @@ import { ConstantService } from '../config/constant.service';
 import { ConfigService } from '@nestjs/config';
 import { AuthController } from '../controllers/auth.controller';
 import { LoggerModule } from './logger.module';
-import { JwtStrategy } from '../config/auth/strategies/jwt.strategy';
 import { AuthGuard } from '../config/auth/guards/auth.guard';
 
 @Module({
