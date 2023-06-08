@@ -11,17 +11,6 @@ export class UserController {
     this.logger.setContext(UserController.name);
   }
 
-  @Post('create')
-  @Roles(Role.User)
-  public async CreateUser(@Body() data: CreateUserDto) {
-    try {
-      return await this.userService.createUser(data);
-    } catch (err) {
-      this.logger.error(err);
-      return err;
-    }
-  }
-
   @Post('getUser')
   @Roles(Role.User)
   public async GetUser(@Body() data) {

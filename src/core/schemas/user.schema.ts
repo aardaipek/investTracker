@@ -17,7 +17,7 @@ export class User {
   @Prop({ default: true })
   isActive: boolean;
   @Prop({ required: true })
-  roles: Role[];
+  role: Role;
   @Prop()
   access_token: string;
 }

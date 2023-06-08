@@ -8,5 +8,5 @@ export interface IUser extends Document{
     isActive: boolean;
     password:string;
     accessToken: string;
-    roles: Role[];
+    role: Role;
 }

@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ConstantService } from '../config/constant.service';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+import { Role } from '../config/auth/guards/guard.decorators';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string): Promise<any> {
+  public async validateUser(email: string, password: string): Promise<any> {
     const user = await this.userService.getUser(email);
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (user && isPasswordMatch) {
@@ -21,11 +22,24 @@ export class AuthService {
     return new UnauthorizedException();
   }
 
-  async login(email) {
+  public async login(email) {
     const user = await this.userService.getUser(email);
-    const payload = { sub: user.id, email: user.email, roles: user.roles };
-    const accessToken = await this.jwtService.signAsync(payload);
-    await this.userService.updateUser(user.id, { access_token: accessToken });
-    return {accessToken};
+    const token = await this.createAccessToken(user);
+    await this.userService.updateUser(user.id, { access_token: token });
+    return { token };
+  }
+
+  public async register(data) {
+    data.role = Role.User;
+    const user = await this.userService.createUser(data);
+    if(user?.email){
+      await this.login(user.email)
+    }
+    return user;
+  }
+
+  private async createAccessToken (user){
+    const payload = { sub: user.id, email: user.email, role: user.role };
+    return await this.jwtService.signAsync(payload);
   }
 }
